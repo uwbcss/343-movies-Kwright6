@@ -4,12 +4,15 @@
  * @author Yusuf Pisan
  * @date 19 Jan 2019
  */
+#include "movie.h"
+#include "movieFactory.h"
 
+#include <cassert>
+#include <fstream>
 #include <iostream>
 #include <map>
 #include <sstream>
-#include <fstream>
-#include <cassert>
+#include <vector>
 
 using namespace std;
 
@@ -33,8 +36,44 @@ void testStore1() {
   cout << "End testStore1" << endl;
 }
 
+// helper - get rid of spaces before and after string
+string trimString(const string &str) {
+  return str.substr(str.find_first_not_of(' '), str.find_last_not_of(' ') + 1);
+}
+
+// helper - split string into multiple based on delimiter
+vector<string> splitString(const string &str, char delimiter = ',') {
+  vector<string> tokens;
+  string token;
+  istringstream tokenStream(str);
+  while (getline(tokenStream, token, delimiter)) {
+    tokens.push_back(trimString(token));
+  }
+  return tokens;
+}
+
 void testStore2() {
   cout << "Start testStore2" << endl;
+  
+  string cfile = "testMovieData.txt";
+  stringstream out;
+  
+  ifstream fs(cfile);
+  assert(fs.is_open());
+  
+  string str;
+  while (getline(fs, str) && !str.empty()) {
+    vector<string> vs = splitString(str);  // split string into tokens
+    if (vs.empty()) continue;  // check if empty
+
+    char genre = vs[0][0];  // take the first character as movie genre
+    out << vs[0];
+
+    // ignoring other pet parameters for this example
+    Movie *movie = MovieFactory::create(genre, vs);
+  }
+  fs.close();
+  assert(out.str() == "D");
   cout << "End testStore2" << endl;
 }
 
