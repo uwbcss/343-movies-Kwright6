@@ -20,9 +20,9 @@ void MovieFactory::registerType(const char &type, MovieFactory *factory) {
 }
 
 // find the corresponding movie factory and get factory to create the object
-Movie *MovieFactory::create(const char &type, const vector<string>& vs) {
-  auto& factories = getMap();
-  if (!factories.count(type)) {
+Movie *MovieFactory::create(const char &type, const vector<string> &vs) {
+  auto &factories = getMap();
+  if (factories.count(type) == 0) {
     cout << "Don't know how to create " << type << endl;
     return nullptr;
   }

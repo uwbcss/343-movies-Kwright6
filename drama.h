@@ -16,7 +16,7 @@ class Drama : public Movie {
         int year;
 
         // Constructor
-        Drama(const vector<string>& tokens);
+        explicit Drama(const vector<string>& vs);
 };
 
 /**

@@ -54,19 +54,21 @@ vector<string> splitString(const string &str, char delimiter = ',') {
 
 void testStore2() {
   cout << "Start testStore2" << endl;
-  
+
   string cfile = "testMovieData.txt";
   stringstream out;
-  
+
   ifstream fs(cfile);
   assert(fs.is_open());
-  
+
   string str;
   while (getline(fs, str) && !str.empty()) {
-    vector<string> vs = splitString(str);  // split string into tokens
-    if (vs.empty()) continue;  // check if empty
+    vector<string> vs = splitString(str); // split string into tokens
+    if (vs.empty()) {
+      continue;
+    } // check if empty
 
-    char genre = vs[0][0];  // take the first character as movie genre
+    char genre = vs[0][0]; // take the first character as movie genre
     out << vs[0];
 
     // ignoring other pet parameters for this example
