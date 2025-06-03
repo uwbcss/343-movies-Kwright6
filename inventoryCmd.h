@@ -6,6 +6,7 @@
 
 class InventoryCmd : public Command {
   public:
+    InventoryCmd();
     void execute() const override;
   private:
     char cmd;  // 'I'
