@@ -7,8 +7,6 @@
 #include "movie.h"
 #include "movieFactory.h"
 #include "movieStore.h"
-#include "movieFactory.h"
-
 #include <cassert>
 #include <fstream>
 #include <iostream>
@@ -85,7 +83,7 @@ void testStoreFinal() {
   cout << "=====================================" << endl;
   cout << "Start testStoreFinal" << endl;
 
-  MovieStore store;  // create store
+  MovieStore store; // create store
 
   // initialize the contents of the inventory from file
   store.readMoviesFromFile("testMovieData.txt");

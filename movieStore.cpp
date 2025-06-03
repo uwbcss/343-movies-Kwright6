@@ -1,6 +1,6 @@
+#include "movieStore.h"
 #include "command.h"
 #include "commandFactory.h"
-#include "movieStore.h"
 #include "movieFactory.h"
 #include <fstream>
 #include <iostream>
@@ -9,11 +9,10 @@
 
 using namespace std;
 
-// MovieStore::~MovieStore() {
-//   for (auto& vec : moviesByType)
-//     for (Movie* movie : vec)
-//       delete movie;
-// }
+// getter for moviesByType hashtable
+const vector<Movie *> *MovieStore::getMoviesByType() const {
+  return moviesByType;
+}
 
 // helper - get rid of spaces before and after string
 string MovieStore::trimString(const string &str) {
@@ -55,8 +54,10 @@ void MovieStore::readMoviesFromFile(const string &filename) {
       // reconnect string minus the command
       string trimmed;
       for (int i = 1; i < vs.size(); ++i) {
-          if (i > 1) trimmed += ", ";
-          trimmed += vs[i];
+        if (i > 1) {
+          trimmed += ", ";
+        }
+        trimmed += vs[i];
       }
       cout << ", discarding line:  " << trimmed << endl;
       continue;
@@ -86,7 +87,7 @@ void MovieStore::readCommandsFromFile(const string &filename) {
 
     // create self-registered command of correct command type
     Command *command = CommandFactory::create(cmd, vs);
-    if (command != nullptr) {  // ensure command was recognized
+    if (command != nullptr) { // ensure command was recognized
       // execute command and pass a reference to this store
       command->execute(*this);
     }

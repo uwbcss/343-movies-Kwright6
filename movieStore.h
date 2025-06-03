@@ -22,6 +22,9 @@ class MovieStore {
         }
 
     public:
+        // getter for moviesByType hashtable
+        const vector<Movie*> *getMoviesByType() const;
+        
         // helper - get rid of spaces before and after string
         static string trimString(const string &str);
 
