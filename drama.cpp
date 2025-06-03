@@ -14,10 +14,15 @@ Drama::Drama(const vector<string> &vs) {
     year = stoi(vs[4]);
 
     // Test Output//
-    // cout << genre << ", " << stock << ", " << director << ", " << title << ",
-    // "
-    //      << year << " | loc: drama.cpp" << endl;
+    // cout << director << ", " << title << ", " << year << ", (" << stock <<
+    // ")"
+    // << " - Drama" << " | loc: drama.cpp" << endl;
   }
+}
+
+void Drama::print() const {
+  cout << director << ", " << title << ", " << year << " (" << stock << ")"
+       << " - Drama" << endl;
 }
 
 DramaFactory::DramaFactory() { registerType('D', this); }
