@@ -6,20 +6,21 @@ using namespace std;
 
 InventoryCmd::InventoryCmd() : cmd('I') {} // Constructor
 
+/*
+  Print all movies in store Inventory
+*/
 void InventoryCmd::execute(MovieStore &store) const {
-  // display store inventory information by calling function with
-  // passed movie store object
   static const int tablesize = 'Z' - 'A' + 1;
-  const auto &inventory = store.getMoviesByType();
+  const auto &inventory = store.getMoviesByType(); // get movies
+  // Search through inventory for all movies
   for (int i = 0; i < tablesize; i++) {
     const auto &movieList = inventory[i];
+    // If this genre has a list of movies
     if (!movieList.empty()) {
       for (const Movie *movie : movieList) {
         if (movie != nullptr) {
           // print movies
-          cout << "execute[I]: " << movie->stock << ", " << movie->director
-               << ", " << movie->title << endl;
-          // movie->print(); (TODO)
+          movie->print();
         }
       }
     }
