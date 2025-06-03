@@ -16,7 +16,7 @@ public:
   virtual Command *makeCommand(const vector<string> &vs) const = 0;
 
   // find the corresponding command factory and get factory to create the object
-  static Command *create(const char &type, const vector<string>& vs);
+  static Command *create(const char &cmd, const vector<string>& vs);
 
 protected:
   // register a concrete factory with a given name

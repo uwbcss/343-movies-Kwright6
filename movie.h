@@ -13,8 +13,9 @@ using namespace std;
 class Movie {
     // All movies have stock, director, and title
     protected:
-        string director, title;
+        //string director, title;
     public:
+        string director, title;
         int stock;
         virtual ~Movie() = default;  // not really used in this case
 };

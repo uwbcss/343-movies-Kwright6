@@ -23,7 +23,7 @@ void MovieFactory::registerType(const char &type, MovieFactory *factory) {
 Movie *MovieFactory::create(const char &type, const vector<string> &vs) {
   auto &factories = getMap();
   if (factories.count(type) == 0) {
-    cout << "Don't know how to create " << type << endl;
+    cout << "Unknown movie type: " << type;
     return nullptr;
   }
   return factories.at(type)->makeMovie(vs);

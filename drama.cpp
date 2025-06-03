@@ -14,8 +14,8 @@ Drama::Drama(const vector<string> &vs) {
     year = stoi(vs[4]);
 
     // Test Output//
-    cout << genre << ", " << stock << ", " << director << ", " << title << ", "
-         << year << endl;
+    // cout << genre << ", " << stock << ", " << director << ", " << title << ", "
+    //      << year << " | loc: drama.cpp" << endl;
   }
 }
 

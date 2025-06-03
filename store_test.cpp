@@ -6,6 +6,8 @@
  */
 #include "movie.h"
 #include "movieFactory.h"
+#include "movieStore.h"
+#include "movieFactory.h"
 
 #include <cassert>
 #include <fstream>
@@ -75,13 +77,25 @@ void testStore2() {
     Movie *movie = MovieFactory::create(genre, vs);
   }
   fs.close();
-  assert(out.str() == "D");
+  assert(out.str() == "DCF");
   cout << "End testStore2" << endl;
 }
 
 void testStoreFinal() {
   cout << "=====================================" << endl;
   cout << "Start testStoreFinal" << endl;
+
+  MovieStore store;  // create store
+
+  // initialize the contents of the inventory from file
+  store.readMoviesFromFile("testMovieData.txt");
+  cout << "==========================" << endl;
+
+  // initialize the customer list from another file (TODO)
+
+  // process an arbitrary sequence of commands from a third file (TODO)
+  store.executeCommands("testcommands-1.txt");
+
   cout << "End testStoreFinal" << endl;
   cout << "=====================================" << endl;
 }

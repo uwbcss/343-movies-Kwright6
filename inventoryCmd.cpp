@@ -6,7 +6,7 @@ using namespace std;
 
 InventoryCmd::InventoryCmd() : cmd('I') {} // Constructor
 
-void InventoryCmd::execute(/*pass reference to MovieStore&*/) const {
+void InventoryCmd::execute(MovieStore& store) const {
   // display store inventory information by calling function with
   // passed movie store object
 }

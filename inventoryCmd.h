@@ -3,11 +3,12 @@
 
 #include "command.h"
 #include "commandFactory.h"
+#include "movieStore.h"
 
 class InventoryCmd : public Command {
   public:
     InventoryCmd();
-    void execute() const override;
+    void execute(MovieStore& store) const override;
   private:
     char cmd;  // 'I'
 };

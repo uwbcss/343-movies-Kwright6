@@ -20,11 +20,11 @@ void CommandFactory::registerType(const char &type, CommandFactory *factory) {
 }
 
 // find the corresponding command factory and get factory to create the object
-Command *CommandFactory::create(const char &type, const vector<string> &vs) {
+Command *CommandFactory::create(const char &cmd, const vector<string> &vs) {
   auto &factories = getMap();
-  if (factories.count(type) == 0) {
-    cout << "Don't know how to create " << type << endl;
+  if (factories.count(cmd) == 0) {
+    cout << "Don't know how to create " << cmd << endl;
     return nullptr;
   }
-  return factories.at(type)->makeCommand(vs);
+  return factories.at(cmd)->makeCommand(vs);
 }

@@ -28,8 +28,11 @@ class MovieStore {
         // helper - split string into multiple based on delimiter
         static vector<string> splitString(const string &str, char delimiter = ',');
 
-        // helper function for reading from file
+        // helper function for reading movies from file
         void readMoviesFromFile(const string &filename);
+
+        // helper function for reading commands from file
+        void readCommandsFromFile(const string &filename);
 
         void executeCommands(const string &filename);
 

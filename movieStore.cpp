@@ -1,3 +1,5 @@
+#include "command.h"
+#include "commandFactory.h"
 #include "movieStore.h"
 #include "movieFactory.h"
 #include <fstream>
@@ -29,7 +31,7 @@ vector<string> MovieStore::splitString(const string &str, char delimiter) {
   return tokens;
 }
 
-// helper function for reading from file
+// helper function for reading movies from file
 void MovieStore::readMoviesFromFile(const string &filename) {
   vector<Movie *> movies;
   ifstream fs(filename);
@@ -47,14 +49,51 @@ void MovieStore::readMoviesFromFile(const string &filename) {
 
     char genre = vs[0][0]; // take the first character as movie genre
 
-    // ignoring other pet parameters for this example
+    // ignoring other parameters
     Movie *movie = MovieFactory::create(genre, vs);
-    if (movie != nullptr) {
-      moviesByType[getBucket(genre)].push_back(movie);
+    if (movie == nullptr) { // Discard line if nullptr
+      // reconnect string minus the command
+      string trimmed;
+      for (int i = 1; i < vs.size(); ++i) {
+          if (i > 1) trimmed += ", ";
+          trimmed += vs[i];
+      }
+      cout << ", discarding line:  " << trimmed << endl;
+      continue;
+    }
+    // add movie to inventory
+    moviesByType[getBucket(genre)].push_back(movie);
+  }
+}
+
+// helper function for reading & executing commands from file
+void MovieStore::readCommandsFromFile(const string &filename) {
+  vector<Command *> commands;
+  ifstream fs(filename);
+  if (!fs.is_open()) {
+    cerr << "Could not open file: " << filename << endl;
+    return;
+  }
+
+  string str;
+  while (getline(fs, str) && !str.empty()) {
+    vector<string> vs = splitString(str);
+    if (vs.empty()) {
+      continue;
+    } // check if empty
+
+    char cmd = vs[0][0]; // take the first character as command
+
+    // create self-registered command of correct command type
+    Command *command = CommandFactory::create(cmd, vs);
+    if (command != nullptr) {  // ensure command was recognized
+      // execute command and pass a reference to this store
+      command->execute(*this);
     }
   }
 }
 
 void MovieStore::executeCommands(const string &filename) {
   // Read commands from file and execute them
+  readCommandsFromFile(filename);
 }

@@ -1,6 +1,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
+#include "movieStore.h"
 #include <map>
 #include <string>
 
@@ -15,7 +16,7 @@ class Command {
     protected:
     public:
         // different commands do different things
-        virtual void execute() const = 0;
+        virtual void execute(MovieStore& store) const = 0;
         virtual ~Command() = default;  // not really used in this case
 };
 
