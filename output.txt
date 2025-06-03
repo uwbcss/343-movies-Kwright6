@@ -1,4 +1,4 @@
-Tue Jun  3 07:35:41 UTC 2025
+Tue Jun  3 09:51:14 UTC 2025
 Linux LinuxMachine 5.15.167.4-microsoft-standard-WSL2 #1 SMP Tue Nov 5 00:21:55 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
 uid=1000(cssuwbstudent) gid=1000(cssuwbstudent) groups=1000(cssuwbstudent),10(wheel)
 =====================================================
@@ -9,71 +9,69 @@ store_test.cpp: In function ‘void testStore2()’:
 store_test.cpp:75:12: warning: unused variable ‘movie’ [-Wunused-variable]
    75 |     Movie *movie = MovieFactory::create(genre, vs);
       |            ^~~~~
+/usr/bin/ld: /tmp/ccSiUiTL.o: in function `InventoryCmd::InventoryCmd()':
+/home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/inventoryCmd.h:7: undefined reference to `vtable for InventoryCmd'
+collect2: error: ld returned 1 exit status
 =====================================================
 2. If the section below is empty or has the expected output 
     the program puns and produces correct output
 =====================================================
-Start testStore1
-End testStore1
-Start testStore2
-D, 10, Barry Levinson, Good Morning Vietnam, 1988
-End testStore2
-=====================================
-Start testStoreFinal
-End testStoreFinal
-=====================================
-Done.
+./create-output.sh: line 40: ./a.out: No such file or directory
 =====================================================
 3. If the section below is empty, then there are no clang-tidy warnings 
    (ignore warnings from system headers, such as "13554 warnings generated.")
 =====================================================
-[1/4] Processing file /home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/drama.cpp.
-17020 warnings generated.
-[2/4] Processing file /home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/main.cpp.
-30823 warnings generated.
-[3/4] Processing file /home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/movie.cpp.
-47858 warnings generated.
-[4/4] Processing file /home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/store_test.cpp.
-65912 warnings generated.
-Suppressed 65912 warnings (65912 in non-user code).
+[1/7] Processing file /home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/command.cpp.
+17035 warnings generated.
+[2/7] Processing file /home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/drama.cpp.
+34055 warnings generated.
+[3/7] Processing file /home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/inventoryCmd.cpp.
+51091 warnings generated.
+[4/7] Processing file /home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/main.cpp.
+64894 warnings generated.
+[5/7] Processing file /home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/movie.cpp.
+81929 warnings generated.
+[6/7] Processing file /home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/movieStore.cpp.
+98950 warnings generated.
+[7/7] Processing file /home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/store_test.cpp.
+117004 warnings generated.
+/home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/movieStore.cpp:7:1: error: missing username/bug in TODO [google-readability-todo,-warnings-as-errors]
+    7 | // TODO
+      | ^~~~~~~
+      | // TODO(cssuwbstudent): 
+/home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/movieStore.h:13:21: error: missing username/bug in TODO [google-readability-todo,-warnings-as-errors]
+   13 | class MovieStore {  // TODO
+      |                     ^~~~~~~
+      |                     // TODO(cssuwbstudent): 
+Suppressed 117002 warnings (117002 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+2 warnings treated as errors
 =====================================================
 4. If the section below is empty, clang-format does not find any formatting issues
    You can fix formatting errors using "clang-format -i <filename>" on command line
 =====================================================
+Running clang-format on ./command.cpp
 Running clang-format on ./drama.cpp
+Running clang-format on ./inventoryCmd.cpp
 Running clang-format on ./main.cpp
 Running clang-format on ./movie.cpp
+Running clang-format on ./movieStore.cpp
 Running clang-format on ./store_test.cpp
 =====================================================
 5. If there are any memory leaks, it should be in the output below
 =====================================================
+/usr/bin/ld: /tmp/ccHeWbBb.o: in function `InventoryCmd::InventoryCmd()':
+/home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/inventoryCmd.h:7: undefined reference to `vtable for InventoryCmd'
+collect2: error: ld returned 1 exit status
 =====================================================
 6. Using valgrind to check for memory leaks
    Check for "definitely lost" in the output below
 =====================================================
-==6276== Memcheck, a memory error detector
-==6276== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==6276== Using Valgrind-3.23.0 and LibVEX; rerun with -h for copyright info
-==6276== Command: ./a.out
-==6276== Parent PID: 6106
-==6276== 
-==6276== 
-==6276== HEAP SUMMARY:
-==6276==     in use at exit: 119 bytes in 2 blocks
-==6276==   total heap usage: 20 allocs, 18 frees, 94,996 bytes allocated
-==6276== 
-==6276== LEAK SUMMARY:
-==6276==    definitely lost: 88 bytes in 1 blocks
-==6276==    indirectly lost: 31 bytes in 1 blocks
-==6276==      possibly lost: 0 bytes in 0 blocks
-==6276==    still reachable: 0 bytes in 0 blocks
-==6276==         suppressed: 0 bytes in 0 blocks
-==6276== Rerun with --leak-check=full to see details of leaked memory
-==6276== 
-==6276== For lists of detected and suppressed errors, rerun with: -s
-==6276== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-Tue Jun  3 07:35:52 UTC 2025
+/usr/bin/ld: /tmp/ccaYYF9S.o: in function `InventoryCmd::InventoryCmd()':
+/home/cssuwbstudent/Kwright6/CSS343/343-movies-Kwright6/inventoryCmd.h:7: undefined reference to `vtable for InventoryCmd'
+collect2: error: ld returned 1 exit status
+cat: valgrind-output.txt: No such file or directory
+Tue Jun  3 09:51:31 UTC 2025
 =====================================================
 To create an output.txt file with all the output from this script
 Run the below command

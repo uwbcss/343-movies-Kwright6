@@ -1,8 +1,6 @@
 #ifndef MOVIE_FACTORY_H
 #define MOVIE_FACTORY_H
 
-//#include "movie.h"
-
 #include <map>
 #include <string>
 #include <vector>
@@ -13,7 +11,7 @@ using namespace std;
 class Movie;
 
 // Abstract MovieFactory where each subclass of Movie needs its own concrete version
-class MovieFactory {
+class MovieFactory {  // implemented in movie
 public:
   virtual Movie *makeMovie(const vector<string>& vs) const = 0;
 

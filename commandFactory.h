@@ -13,7 +13,7 @@ class Command;
 // Abstract CommandFactory where each subclass of Command needs its own concrete version
 class CommandFactory { // implemented in command
 public:
-  virtual Command *makeCommand(const vector<string>& vs) const = 0;
+  virtual Command *makeCommand(const vector<string> &vs) const = 0;
 
   // find the corresponding command factory and get factory to create the object
   static Command *create(const char &type, const vector<string>& vs);
