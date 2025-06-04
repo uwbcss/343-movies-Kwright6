@@ -13,6 +13,7 @@ class Movie;
 // Abstract MovieFactory where each subclass of Movie needs its own concrete version
 class MovieFactory {  // implemented in movie
 public:
+  // Each subclass will make movies
   virtual Movie *makeMovie(const vector<string>& vs) const = 0;
 
   // find the corresponding movie factory and get factory to create the object
