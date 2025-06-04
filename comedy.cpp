@@ -15,8 +15,8 @@ Comedy::Comedy(const vector<string> &vs) {
 }
 
 void Comedy::print() const {
-  // F, 10, Nora Ephron, You've Got Mail, 1998
-  // You've Got Mail, 1998, Nora Ephron (10) - Comedy
+  // F, 10, Nora Ephron, Sleepless in Seattle, 1993
+  // Sleepless in Seattle, 1993, Nora Ephron (10) - Comedy
   // Title, Year, Director (stock) - Comedy
   cout << title << ", " << year << ", " << director << " (" << stock << ")"
        << " - Comedy" << endl;
