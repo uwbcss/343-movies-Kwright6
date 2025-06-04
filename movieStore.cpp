@@ -106,6 +106,7 @@ void MovieStore::readCommandsFromFile(const string &filename) {
       command->execute(*this);
       cout << "==========================" << endl;
     }
+    delete command;
   }
 }
 

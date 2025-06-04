@@ -73,6 +73,7 @@ void testStore2() {
 
     // ignoring other pet parameters for this example
     Movie *movie = MovieFactory::create(genre, vs);
+    delete movie;
   }
   fs.close();
   assert(out.str() == "DCF");
