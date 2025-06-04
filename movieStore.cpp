@@ -9,6 +9,20 @@
 
 using namespace std;
 
+// Destructor
+MovieStore::~MovieStore() {
+  // Delete all movies in inventory
+  for (int i = 0; i < TABLE_SIZE; i++) {
+    const auto &movieList = moviesByType[i];
+    // If this list has movies
+    if (!movieList.empty()) {
+      for (Movie *movie : movieList) {
+        delete movie;
+      }
+    }
+  }
+}
+
 // getter for moviesByType hashtable
 const vector<Movie *> *MovieStore::getMoviesByType() const {
   return moviesByType;

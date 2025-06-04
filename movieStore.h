@@ -39,7 +39,7 @@ class MovieStore {
 
         void executeCommands(const string &filename);
 
-        virtual ~MovieStore() = default; // not really used in this case
+        virtual ~MovieStore();
 };
 
 #endif // MOVIE_STORE_H
