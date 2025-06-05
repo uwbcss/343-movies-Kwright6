@@ -155,7 +155,12 @@ void MovieStore::sortInventory() {
   });
   
   // Sort Comedy Vector
-
+  std::sort(moviesByType['F' - 'A'].begin(), moviesByType['F' - 'A'].end(),
+                                      [](Movie* a, Movie* b) {
+    // sort by title, if same, sort by year
+    return a->title < b->title ||
+          (a->title == b->title && a->getYear() < b->getYear());
+  });
 
   // Sort Classics Vector
 

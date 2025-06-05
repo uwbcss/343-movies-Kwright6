@@ -25,6 +25,10 @@ Classics::Classics(const vector<string> &vs) {
   }
 }
 
+int Classics::getYear() const {
+  return year;
+}
+
 void Classics::print() const {
   // C, 10, Victor Fleming, The Wizard of Oz, Judy Garland 7 1939
   // 1939 7, Judy Garland, Victor Fleming, The Wizard of Oz (10) - Classics

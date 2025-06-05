@@ -20,6 +20,10 @@ Drama::Drama(const vector<string> &vs) {
   }
 }
 
+int Drama::getYear() const {
+  return year;
+}
+
 void Drama::print() const {
   // D, 10, Barry Levinson, Good Morning Vietnam, 1988
   // Barry Levinson, Good Morning Vietnam, 1988 (10) - Drama
