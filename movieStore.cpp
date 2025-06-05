@@ -36,10 +36,10 @@ vector<Movie *> (&MovieStore::getMoviesByType())[TABLE_SIZE] {
   return moviesByType;
 }
 
-// getter for a nonmodifiable moviesByType hashtable
-// const vector<Movie *> (&MovieStore::getMoviesByType() const)[TABLE_SIZE] {
-//   return moviesByType;
-// }
+// getter for customerList
+unordered_map<int, Customer*> &MovieStore::getCustomerList() {
+  return customerList;
+}
 
 // helper - get rid of spaces before and after string
 string MovieStore::trimString(const string &str) {
@@ -116,7 +116,7 @@ void MovieStore::readCommandsFromFile(const string &filename) {
     Command *command = CommandFactory::create(cmd, vs);
     if (command != nullptr) { // ensure command was recognized
       // execute command and pass a reference to this store
-      command->execute(*this);
+      command->execute(*this, vs);
       cout << "==========================" << endl;
     }
     delete command;

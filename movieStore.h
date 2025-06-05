@@ -26,6 +26,9 @@ class MovieStore {
     public:
         // getter for moviesByType hashtable
         vector<Movie*> (&getMoviesByType())[TABLE_SIZE];
+
+        // getter for customerList
+        unordered_map<int, Customer*> &getCustomerList();
         
         // helper - get rid of spaces before and after string
         static string trimString(const string &str);
