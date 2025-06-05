@@ -1,6 +1,7 @@
 #ifndef MOVIE_STORE_H
 #define MOVIE_STORE_H
 
+#include "customer.h"
 #include "movie.h"
 #include <cassert>
 #include <unordered_map>
@@ -14,6 +15,7 @@ class MovieStore {
         // manual hashtable container for movies
         static const int TABLE_SIZE = 'Z' - 'A' + 1; // 'A' to 'Z' for up to 26 movie genres
         vector<Movie*> moviesByType[TABLE_SIZE]; // each bucket is a vector for each genre
+        unordered_map<int, Customer*> customerList; // map of customers <ID, Customer>
 
         // hash function for container
         static int getBucket(char movieType) {
@@ -38,6 +40,9 @@ class MovieStore {
         void readCommandsFromFile(const string &filename);
 
         void executeCommands(const string &filename);
+
+        // function to initilize customer list
+        void readCustomersFromFile(const string &filename);
 
         virtual ~MovieStore();
 };

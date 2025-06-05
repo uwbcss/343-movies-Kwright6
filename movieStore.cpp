@@ -21,6 +21,11 @@ MovieStore::~MovieStore() {
       }
     }
   }
+
+  // Delete all customers in customerList
+  for (auto &pair : customerList) {
+    delete pair.second;
+  }
 }
 
 // getter for moviesByType hashtable
@@ -113,4 +118,27 @@ void MovieStore::readCommandsFromFile(const string &filename) {
 void MovieStore::executeCommands(const string &filename) {
   // Read commands from file and execute them
   readCommandsFromFile(filename);
+}
+
+void MovieStore::readCustomersFromFile(const string &filename) {
+  ifstream fs(filename);
+  if (!fs.is_open()) {
+    cerr << "Could not open file: " << filename << endl;
+    return;
+  }
+
+  string str;
+  while (getline(fs, str) && !str.empty()) {
+    istringstream iss(str);
+    int id;
+    string firstName;
+    string lastName;
+    iss >> id >> lastName >> firstName;
+
+    // create new customer
+    Customer *customer = new Customer(id, firstName, lastName);
+
+    // add customer to customer list
+    customerList[id] = customer;
+  }
 }
