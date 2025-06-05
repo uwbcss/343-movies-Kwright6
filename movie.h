@@ -12,8 +12,6 @@ using namespace std;
  **/
 class Movie {
     // All movies have stock, director, and title
-    protected:
-        //string director, title;
     public:
         string director, title;
         int stock;
