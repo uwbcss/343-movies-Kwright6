@@ -14,7 +14,8 @@ int Customer::getID() const { return id; }
 string Customer::getFullName() const { return lastName + " " + firstName; }
 
 void Customer::borrowMovie(Movie *movie) {
-  // TODO
+  // add movie to borrowedMovies
+  borrowedMovies[movie->title] = movie;
 }
 
 void Customer::returnMovie(Movie *movie) {
