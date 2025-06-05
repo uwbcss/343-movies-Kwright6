@@ -16,7 +16,7 @@ class Command {
     protected:
     public:
         // different commands do different things
-        virtual void execute(MovieStore& store) const = 0;
+        virtual void execute(MovieStore& store, const vector<string> &vs) const = 0;
         virtual ~Command() = default;  // not really used in this case
 };
 

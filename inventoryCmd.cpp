@@ -9,7 +9,8 @@ InventoryCmd::InventoryCmd() : cmd('I') {} // Constructor
 /*
   Print all movies in store Inventory
 */
-void InventoryCmd::execute(MovieStore &store) const {
+void InventoryCmd::execute(MovieStore &store, const vector<string> &vs) const {
+  assert(vs.size() == 1); // to avoid unused parameter warning
   static const int tablesize = 'Z' - 'A' + 1;
   const auto &inventory = store.getMoviesByType(); // get movies
   // Search through inventory for all movies

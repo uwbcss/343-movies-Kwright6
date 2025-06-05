@@ -8,7 +8,7 @@
 class InventoryCmd : public Command {
   public:
     InventoryCmd();
-    void execute(MovieStore& store) const override;
+    void execute(MovieStore& store, const vector<string> &vs) const override;
   private:
     char cmd;  // 'I'
 };
