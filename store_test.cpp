@@ -7,6 +7,7 @@
 #include "movie.h"
 #include "movieFactory.h"
 #include "movieStore.h"
+#include <algorithm>
 #include <cassert>
 #include <fstream>
 #include <iostream>
@@ -55,6 +56,7 @@ vector<string> splitString(const string &str, char delimiter = ',') {
 void testStore2() {
   cout << "Start testStore2" << endl;
 
+  // ========Test Creating Movies=============
   string cfile = "testMovieData.txt";
   stringstream out;
 
@@ -76,7 +78,34 @@ void testStore2() {
     delete movie;
   }
   fs.close();
-  assert(out.str() == "DCF");
+  assert(out.str() == "DDCCFF");
+
+  // =============Test Sorting================
+  MovieStore store; // create store
+  store.readMoviesFromFile("testMovieData.txt"); // get inventory
+
+  auto &inventory = store.getMoviesByType(); 
+  vector<int> genres = {('F' - 'A'), ('D' - 'A'), ('C' - 'A')};
+  for (int genre : genres) {
+    for (const Movie *movie : inventory[genre]) {
+          if (movie != nullptr) {
+            // print movies
+            movie->print();
+          }
+    }
+  }
+  // Sort Vectors
+  store.sortInventory();
+  cout << endl;
+
+  for (int genre : genres) {
+    for (const Movie *movie : inventory[genre]) {
+          if (movie != nullptr) {
+            // print movies
+            movie->print();
+          }
+    }
+  }
   cout << "End testStore2" << endl;
 }
 
@@ -90,10 +119,14 @@ void testStoreFinal() {
   store.readMoviesFromFile("testMovieData.txt");
   cout << "==========================" << endl;
 
-  // initialize the customer list from another file (TODO)
+  // Sort Movie Lists
+  // TODO
+  store.sortInventory();
+
+  // initialize the customer list from another file
   store.readCustomersFromFile("data4customers.txt");
 
-  // process an arbitrary sequence of commands from a third file (TODO)
+  // process an arbitrary sequence of commands from a third file
   store.executeCommands("testcommands-1.txt");
 
   cout << "End testStoreFinal" << endl;
