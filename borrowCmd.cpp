@@ -1,4 +1,5 @@
 #include "borrowCmd.h"
+#include "classics.h"
 #include <cassert>
 #include <iostream>
 #include <sstream>
@@ -71,7 +72,7 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
         // Get full title (rest of iss)
         getline(iss, title);
         title = title.substr(title.find_first_not_of(' ')); // remove leading space
-        cout << title << ", " << year << "     <-- 49:borrowCmd.cpp" << endl;
+        cout << title << ", " << year << "     <-- 75:borrowCmd.cpp" << endl;
     }
 
     if (genre == 'D') {
@@ -104,10 +105,10 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
         title = vs[1];
         getline(iss, director);
         director = director.substr(director.find_first_not_of(' ')); // remove leading space
-        cout << title << ", " << director << "     <-- 106:borrowCmd.cpp" << endl;
+        cout << title << ", " << director << "     <-- 108:borrowCmd.cpp" << endl;
     }
 
-    if (genre == 'C') { // todo
+    if (genre == 'C') {
         // Check for Valid Type
         if (type != 'D') {
             // output: Invalid media type <type>, discarding line:  C 5 1940 Katherine Hepburn
@@ -138,7 +139,7 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
         string lastName;
         iss >> month >> year >> firstName >> lastName;
         majorActor = firstName + " " + lastName;
-        cout << month << " " << year << " " << majorActor << "     <-- 127:borrowCmd.cpp" << endl;
+        cout << month << " " << year << " " << majorActor << "     <-- 142:borrowCmd.cpp" << endl;
     }
 
     // Get movie
@@ -148,20 +149,27 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
         for (Movie *movie : movieList) {
             // Comedy
             if (genre == 'F' && (movie->title == title && movie->getYear() == year)) {
-            cout << movie->title << ", " << movie->getYear() << "     <-- 137:borrowCmd.cpp" << endl;
+            cout << movie->title << ", " << movie->getYear() << "     <-- 152:borrowCmd.cpp" << endl;
             movieToBorrow = movie;
             break;
             }
             
             // Drama
             if (genre == 'D' && (movie->title == title && movie->director == director)) {
-            cout << movie->title << ", " << movie->director << "     <-- 143:borrowCmd.cpp" << endl;
+            cout << movie->title << ", " << movie->director << "     <-- 159:borrowCmd.cpp" << endl;
             movieToBorrow = movie;
             break;
             }
 
-            // Classic (todo)
-            
+            // Classic
+            if (genre == 'C') {
+                Classics *cMovie = dynamic_cast<Classics *>(movie);
+                if (cMovie->month == month && cMovie->year == year && cMovie->majorActor == majorActor) {
+                cout << cMovie->month << " " << cMovie->year << " " << cMovie->majorActor << "     <-- 169:borrowCmd.cpp" << endl;
+                movieToBorrow = movie;
+                break;
+                }
+            }
         }
     }
     
