@@ -18,6 +18,9 @@ class Drama : public Movie {
         // Constructor
         explicit Drama(const vector<string>& vs);
 
+        // getter for year
+        int getYear() const override;
+
         void print() const override;
 };
 

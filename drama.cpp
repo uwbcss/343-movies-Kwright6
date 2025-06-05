@@ -12,12 +12,12 @@ Drama::Drama(const vector<string> &vs) {
     director = vs[2];
     title = vs[3];
     year = stoi(vs[4]);
-
-    // Test Output//
-    // cout << director << ", " << title << ", " << year << ", (" << stock <<
-    // ")"
-    // << " - Drama" << " | loc: drama.cpp" << endl;
   }
+}
+
+// getter for year
+int Drama::getYear() const {
+  return year;
 }
 
 void Drama::print() const {
