@@ -91,6 +91,7 @@ void testStoreFinal() {
   cout << "==========================" << endl;
 
   // initialize the customer list from another file (TODO)
+  store.readCustomersFromFile("data4customers.txt");
 
   // process an arbitrary sequence of commands from a third file (TODO)
   store.executeCommands("testcommands-1.txt");
