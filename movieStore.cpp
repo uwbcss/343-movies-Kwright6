@@ -37,7 +37,7 @@ vector<Movie *> (&MovieStore::getMoviesByType())[TABLE_SIZE] {
 }
 
 // getter for customerList
-unordered_map<int, Customer*> &MovieStore::getCustomerList() {
+unordered_map<int, Customer *> &MovieStore::getCustomerList() {
   return customerList;
 }
 
