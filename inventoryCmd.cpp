@@ -13,7 +13,7 @@ void InventoryCmd::execute(MovieStore &store) const {
   static const int tablesize = 'Z' - 'A' + 1;
   const auto &inventory = store.getMoviesByType(); // get movies
   // Search through inventory for all movies
-  for (int i = 0; i < tablesize; i++) {
+  for (int i = tablesize - 1; i >= 0; i--) {
     const auto &movieList = inventory[i];
     // If this genre has a list of movies
     if (!movieList.empty()) {
