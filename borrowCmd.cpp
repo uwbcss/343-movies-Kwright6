@@ -195,6 +195,12 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
         // <fullName> could NOT borrow <title>, out of stock: 
         // ==========================
         // Failed to execute command: Borrow <fullName> <title>
+        cout << "==========================" << endl;
+        cout << customer->getFullName() << " could NOT borrow " << movieToBorrow->title <<
+        ", out of stock:" << endl;
+        cout << "==========================" << endl;
+        cout << "Failed to execute command: Borrow" << customer->getFullName() << " " << 
+        movieToBorrow->title << endl;
     }
 }
 
