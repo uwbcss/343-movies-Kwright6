@@ -20,7 +20,9 @@ class Classics : public Movie {
         // Constructor
         explicit Classics(const vector<string> &vs);
 
-        int getYear() const override; // getter
+        // int getMonth() const; // Getter
+        // int getYear() const; // Getter
+        // string getMajorActor() const; // Getter
 
         void print() const override;
 };

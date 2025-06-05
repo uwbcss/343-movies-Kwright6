@@ -14,10 +14,6 @@ Comedy::Comedy(const vector<string> &vs) {
   }
 }
 
-int Comedy::getYear() const {
-  return year;
-}
-
 void Comedy::print() const {
   // F, 10, Nora Ephron, Sleepless in Seattle, 1993
   // Sleepless in Seattle, 1993, Nora Ephron (10) - Comedy

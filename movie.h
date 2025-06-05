@@ -17,7 +17,6 @@ class Movie {
     public:
         string director, title;
         int stock;
-        virtual int getYear() const = 0; // to get the year for sorting
         virtual void print() const = 0; // each movie can print itself
         virtual ~Movie() = default;  // not really used in this case
 };
