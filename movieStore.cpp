@@ -2,6 +2,7 @@
 #include "command.h"
 #include "commandFactory.h"
 #include "movieFactory.h"
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -29,7 +30,7 @@ MovieStore::~MovieStore() {
 }
 
 // getter for moviesByType hashtable
-const vector<Movie *> *MovieStore::getMoviesByType() const {
+vector<Movie *> (&MovieStore::getMoviesByType())[TABLE_SIZE] {
   return moviesByType;
 }
 
@@ -141,4 +142,21 @@ void MovieStore::readCustomersFromFile(const string &filename) {
     // add customer to customer list
     customerList[id] = customer;
   }
+}
+
+// function to sort movie inventory
+void MovieStore::sortInventory() {
+  // Sort Drama Vector
+  std::sort(moviesByType['D' - 'A'].begin(), moviesByType['D' - 'A'].end(),
+                                      [](Movie* a, Movie* b) {
+    // sort by director, if same, sort by title
+    return a->director < b->director ||
+          (a->director == b->director && a->title < b->title);
+  });
+  
+  // Sort Comedy Vector
+
+
+  // Sort Classics Vector
+
 }

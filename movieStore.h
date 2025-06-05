@@ -10,7 +10,7 @@
 using namespace std;
 
 class MovieStore {
-    private:
+    protected:
         //unordered_map<char, vector<Movie *>> moviesByType; // easy container for movies
         // manual hashtable container for movies
         static const int TABLE_SIZE = 'Z' - 'A' + 1; // 'A' to 'Z' for up to 26 movie genres
@@ -25,7 +25,7 @@ class MovieStore {
 
     public:
         // getter for moviesByType hashtable
-        const vector<Movie*> *getMoviesByType() const;
+        vector<Movie*> (&getMoviesByType())[TABLE_SIZE];
         
         // helper - get rid of spaces before and after string
         static string trimString(const string &str);
@@ -43,6 +43,9 @@ class MovieStore {
 
         // function to initilize customer list
         void readCustomersFromFile(const string &filename);
+
+        // function to sort movie inventory
+        void sortInventory();
 
         virtual ~MovieStore();
 };
