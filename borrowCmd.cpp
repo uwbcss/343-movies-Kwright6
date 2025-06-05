@@ -72,7 +72,6 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
         // Get full title (rest of iss)
         getline(iss, title);
         title = title.substr(title.find_first_not_of(' ')); // remove leading space
-        cout << title << ", " << year << "     <-- 75:borrowCmd.cpp" << endl;
     }
 
     if (genre == 'D') {
@@ -105,7 +104,6 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
         title = vs[1];
         getline(iss, director);
         director = director.substr(director.find_first_not_of(' ')); // remove leading space
-        cout << title << ", " << director << "     <-- 108:borrowCmd.cpp" << endl;
     }
 
     if (genre == 'C') {
@@ -139,7 +137,6 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
         string lastName;
         iss >> month >> year >> firstName >> lastName;
         majorActor = firstName + " " + lastName;
-        cout << month << " " << year << " " << majorActor << "     <-- 142:borrowCmd.cpp" << endl;
     }
 
     // Get movie
@@ -149,14 +146,12 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
         for (Movie *movie : movieList) {
             // Comedy
             if (genre == 'F' && (movie->title == title && movie->getYear() == year)) {
-            cout << movie->title << ", " << movie->getYear() << "     <-- 152:borrowCmd.cpp" << endl;
             movieToBorrow = movie;
             break;
             }
             
             // Drama
             if (genre == 'D' && (movie->title == title && movie->director == director)) {
-            cout << movie->title << ", " << movie->director << "     <-- 159:borrowCmd.cpp" << endl;
             movieToBorrow = movie;
             break;
             }
@@ -165,7 +160,6 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
             if (genre == 'C') {
                 Classics *cMovie = dynamic_cast<Classics *>(movie);
                 if (cMovie->month == month && cMovie->year == year && cMovie->majorActor == majorActor) {
-                cout << cMovie->month << " " << cMovie->year << " " << cMovie->majorActor << "     <-- 169:borrowCmd.cpp" << endl;
                 movieToBorrow = movie;
                 break;
                 }
