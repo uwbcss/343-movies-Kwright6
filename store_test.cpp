@@ -78,20 +78,20 @@ void testStore2() {
     delete movie;
   }
   fs.close();
-  assert(out.str() == "DDCCFF");
+  assert(out.str() == "DDCCCFF");
 
   // =============Test Sorting================
-  MovieStore store; // create store
-  store.readMoviesFromFile("testMovieData.txt"); // get inventory
+  MovieStore store;                            // create store
+  store.readMoviesFromFile("data4movies.txt"); // get inventory
 
-  auto &inventory = store.getMoviesByType(); 
+  auto &inventory = store.getMoviesByType();
   vector<int> genres = {('F' - 'A'), ('D' - 'A'), ('C' - 'A')};
   for (int genre : genres) {
     for (const Movie *movie : inventory[genre]) {
-          if (movie != nullptr) {
-            // print movies
-            movie->print();
-          }
+      if (movie != nullptr) {
+        // print movies
+        // movie->print();
+      }
     }
   }
   // Sort Vectors
@@ -100,10 +100,10 @@ void testStore2() {
 
   for (int genre : genres) {
     for (const Movie *movie : inventory[genre]) {
-          if (movie != nullptr) {
-            // print movies
-            movie->print();
-          }
+      if (movie != nullptr) {
+        // print movies
+        // movie->print();
+      }
     }
   }
   cout << "End testStore2" << endl;
@@ -116,11 +116,10 @@ void testStoreFinal() {
   MovieStore store; // create store
 
   // initialize the contents of the inventory from file
-  store.readMoviesFromFile("testMovieData.txt");
+  store.readMoviesFromFile("data4movies.txt");
   cout << "==========================" << endl;
 
   // Sort Movie Lists
-  // TODO
   store.sortInventory();
 
   // initialize the customer list from another file

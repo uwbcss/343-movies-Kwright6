@@ -1,4 +1,6 @@
 #include "movieStore.h"
+#include "classics.h"
+#include "comedy.h"
 #include "command.h"
 #include "commandFactory.h"
 #include "movieFactory.h"
@@ -29,10 +31,15 @@ MovieStore::~MovieStore() {
   }
 }
 
-// getter for moviesByType hashtable
+// getter for a modifiable moviesByType hashtable
 vector<Movie *> (&MovieStore::getMoviesByType())[TABLE_SIZE] {
   return moviesByType;
 }
+
+// getter for a nonmodifiable moviesByType hashtable
+// const vector<Movie *> (&MovieStore::getMoviesByType() const)[TABLE_SIZE] {
+//   return moviesByType;
+// }
 
 // helper - get rid of spaces before and after string
 string MovieStore::trimString(const string &str) {
@@ -148,20 +155,32 @@ void MovieStore::readCustomersFromFile(const string &filename) {
 void MovieStore::sortInventory() {
   // Sort Drama Vector
   std::sort(moviesByType['D' - 'A'].begin(), moviesByType['D' - 'A'].end(),
-                                      [](Movie* a, Movie* b) {
-    // sort by director, if same, sort by title
-    return a->director < b->director ||
-          (a->director == b->director && a->title < b->title);
-  });
-  
+            [](Movie *a, Movie *b) {
+              // sort by director, if same, sort by title
+              return a->director < b->director ||
+                     (a->director == b->director && a->title < b->title);
+            });
+
   // Sort Comedy Vector
   std::sort(moviesByType['F' - 'A'].begin(), moviesByType['F' - 'A'].end(),
-                                      [](Movie* a, Movie* b) {
-    // sort by title, if same, sort by year
-    return a->title < b->title ||
-          (a->title == b->title && a->getYear() < b->getYear());
-  });
+            [](Movie *a, Movie *b) {
+              Comedy *fa = dynamic_cast<Comedy *>(a);
+              Comedy *fb = dynamic_cast<Comedy *>(b);
+              // sort by title, if same, sort by year
+              return a->title < b->title ||
+                     (a->title == b->title && fa->year < fb->year);
+            });
 
   // Sort Classics Vector
-
+  std::sort(moviesByType['C' - 'A'].begin(), moviesByType['C' - 'A'].end(),
+            [](Movie *a, Movie *b) {
+              Classics *ca = dynamic_cast<Classics *>(a);
+              Classics *cb = dynamic_cast<Classics *>(b);
+              // sort by year, if same, sort by month, if same, sort by
+              // majorActor
+              return ca->year < cb->year ||
+                     (ca->year == cb->year && ca->month < cb->month) ||
+                     (ca->year == cb->year && ca->month == cb->month &&
+                      ca->majorActor < cb->majorActor);
+            });
 }
