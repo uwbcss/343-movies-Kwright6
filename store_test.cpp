@@ -126,7 +126,7 @@ void testStoreFinal() {
   store.readCustomersFromFile("data4customers.txt");
 
   // process an arbitrary sequence of commands from a third file
-  store.executeCommands("testcommands-1.txt");
+  store.executeCommands("data4commands.txt");
 
   cout << "End testStoreFinal" << endl;
   cout << "=====================================" << endl;
