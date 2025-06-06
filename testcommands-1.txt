@@ -1,15 +1,15 @@
 I
 H 1000
 H 8000
-B 8000 D F You've Got Mail, 1998
 B 8001 D F You've Got Mail, 1998
-B 1000 D D Barry Levinson, Good Morning Vietnam,
 B 1001 D D Barry Levinson, Good Morning Vietnam,
-B 1000 D C 5 1940 Katherine Hepburn
 B 1001 D C 5 1940 Katherine Hepburn
 B 1000 D F Bogus Title, 2001
 B 1000 Z F Fargo, 1996
+B 8000 D F You've Got Mail, 1998
 R 8000 D F You've Got Mail, 1998
+B 1000 D D Barry Levinson, Good Morning Vietnam,
+B 1000 D C 5 1940 Katherine Hepburn
 I
 B 9999 D F You've Got Mail, 1998
 B 8000 D C 3 1971 Ruth Gordon
