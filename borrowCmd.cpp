@@ -199,13 +199,13 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
     // Borrow movie
     customer->borrowMovie(movieToBorrow);
     // output: Debug: Borrow <id> <fullName> movie->print()
-    cout << "Debug: Borrow " << id << " " << customer->getFullName() << " ";
-    movieToBorrow->print();
+    //cout << "Debug: Borrow " << id << " " << customer->getFullName() << " ";
+    //movieToBorrow->print();
     movieToBorrow->stock--; // Update stock
   } else {
     // output: Debug: Borrow <id> <fullName> movie->print() *with 0 stock*
-    cout << "Debug: Borrow " << id << " " << customer->getFullName() << " ";
-    movieToBorrow->print();
+    //cout << "Debug: Borrow " << id << " " << customer->getFullName() << " ";
+    //movieToBorrow->print();
     // output:
     // ==========================
     // <fullName> could NOT borrow <title>, out of stock:

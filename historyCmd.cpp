@@ -33,7 +33,7 @@ void HistoryCmd::execute(MovieStore &store, const vector<string> &vs) const {
   }
 
   // Print history
-  cout << "Debug: History for " << id << " " << customer->getFullName() << endl;
+  //cout << "Debug: History for " << id << " " << customer->getFullName() << endl;
   cout << "==========================" << endl;
   cout << "History for " << id << " " << customer->getFullName() << ":" << endl;
   customer->printHistory();
