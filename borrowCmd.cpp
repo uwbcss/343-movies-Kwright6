@@ -41,6 +41,15 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
     customer = it->second;
   }
 
+  // Check for Valid Movie Type
+  if (genre != 'F' && genre != 'D' && genre != 'C') {
+    // output: Invalid movie type <type>, discarding line:  2 1971 Malcolm McDowell
+    string str;
+    getline(iss, str);
+    cout << "Invalid movie type " << genre << ", discarding line: " << str << endl;
+    return;
+  }
+
   if (genre == 'F') {
     // Check for Valid Type
     if (type != 'D') {
@@ -115,8 +124,7 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
       // Hepburn
       string str;
       getline(iss, str);
-      cout << "Invalid media type " << type << ", discarding line: " << str
-           << ", " << vs[1] << endl;
+      cout << "Invalid media type " << type << ", discarding line: " << str << endl;
       return;
     }
 
@@ -176,8 +184,10 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
   // Check if movie is invalid (bogus title) (todo: output)
   if (movieToBorrow == nullptr) {
     // output: Invalid movie for customer <fullName>, discarding line:"
-    cout << "Invalid movie  for customer " << customer->getFullName()
-         << ", discarding line: " << endl;
+    string str;
+    getline(iss, str);
+    cout << "Invalid movie for customer " << customer->getFullName()
+         << ", discarding line: " << title << endl;
     return;
   }
 
