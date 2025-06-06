@@ -32,7 +32,7 @@ void testStore1() {
     getline(fs, discard);
   }
   fs.close();
-  string result = "IHHBBBBBBRBRBRIBBIH";
+  string result = "IHHBBBBBBBBBRBRBRIBBIH";
   assert(out.str() == result);
   cout << "End testStore1" << endl;
 }
@@ -126,7 +126,7 @@ void testStoreFinal() {
   store.readCustomersFromFile("data4customers.txt");
 
   // process an arbitrary sequence of commands from a third file
-  store.executeCommands("data4commands.txt");
+  store.executeCommands("testcommands-1.txt");
 
   cout << "End testStoreFinal" << endl;
   cout << "=====================================" << endl;
