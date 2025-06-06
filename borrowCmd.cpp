@@ -104,7 +104,8 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
     // vs[1] = title
     title = vs[1];
     getline(iss, director);
-    director = director.substr(director.find_first_not_of(' ')); // remove leading space
+    director = director.substr(
+        director.find_first_not_of(' ')); // remove leading space
   }
 
   if (genre == 'C') {
