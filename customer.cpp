@@ -30,6 +30,6 @@ void Customer::returnMovie(Movie *movie) {
   history.push_back("Return " + movie->title);
 }
 
-void Customer::getHistory() const {
+void Customer::printHistory() const {
   // TODO
 }

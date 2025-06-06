@@ -29,7 +29,7 @@ class Customer {
 
         void returnMovie(Movie* movie);
 
-        void getHistory() const;
+        void printHistory() const;
 };
 
 #endif // CUSTOMER_H
