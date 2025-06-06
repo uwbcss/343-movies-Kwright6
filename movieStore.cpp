@@ -117,7 +117,7 @@ void MovieStore::readCommandsFromFile(const string &filename) {
     if (command != nullptr) { // ensure command was recognized
       // execute command and pass a reference to this store
       command->execute(*this, vs);
-      cout << "==========================" << endl;
+      //cout << "==========================" << endl;
     }
     delete command;
   }
