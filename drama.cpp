@@ -26,6 +26,8 @@ void Drama::print() const {
        << " - Drama" << endl;
 }
 
+#ifndef EXCLUDE_DRAMA
+
 DramaFactory::DramaFactory() { registerType('D', this); }
 
 Movie *DramaFactory::makeMovie(const vector<string> &vs) const {
@@ -34,3 +36,5 @@ Movie *DramaFactory::makeMovie(const vector<string> &vs) const {
 
 // creating the object registers the type at run time
 DramaFactory theDramaFactory;
+
+#endif  // EXCLUDE_DRAMA
