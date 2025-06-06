@@ -19,7 +19,8 @@ void Customer::borrowMovie(Movie *movie) {
 }
 
 void Customer::returnMovie(Movie *movie) {
-  // TODO
+  // remove movie from borrowedMovies
+  borrowedMovies.erase(movie->title);
 }
 
 void Customer::getHistory() const {
