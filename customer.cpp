@@ -26,6 +26,17 @@ void Customer::borrowMovie(Movie *movie) {
 void Customer::returnMovie(Movie *movie) {
   // Check that movie was borrowed
   if (borrowedMovies.find(movie->title) == borrowedMovies.end()) {
+    // output:
+    // ==========================
+    // <fullName> could NOT return <title>, never borrowed:
+    // ==========================
+    // Failed to execute command: Return <fullName> <title>
+    cout << "==========================" << endl;
+    cout << getFullName() << " could NOT return "
+         << movie->title << ", never borrowed:" << endl;
+    cout << "==========================" << endl;
+    cout << "Failed to execute command: Return " << getFullName()
+         << " " << movie->title << endl;
     return;
   }
 
