@@ -9,7 +9,9 @@ B 1000 Z F Fargo, 1996
 B 8000 D F You've Got Mail, 1998
 R 8000 D F You've Got Mail, 1998
 B 1000 D D Barry Levinson, Good Morning Vietnam,
+R 1000 D D Barry Levinson, Good Morning Vietnam,
 B 1000 D C 5 1940 Katherine Hepburn
+R 1000 D C 5 1940 Katherine Hepburn
 I
 B 9999 D F You've Got Mail, 1998
 B 8000 D C 3 1971 Ruth Gordon

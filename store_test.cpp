@@ -32,7 +32,7 @@ void testStore1() {
     getline(fs, discard);
   }
   fs.close();
-  string result = "IHHBBBBBBRBBIBBIH";
+  string result = "IHHBBBBBBRBRBRIBBIH";
   assert(out.str() == result);
   cout << "End testStore1" << endl;
 }
