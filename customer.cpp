@@ -24,6 +24,11 @@ void Customer::borrowMovie(Movie *movie) {
 }
 
 void Customer::returnMovie(Movie *movie) {
+  // Check that movie was borrowed
+  if (borrowedMovies.find(movie->title) == borrowedMovies.end()) {
+    return;
+  }
+
   // remove movie from borrowedMovies
   borrowedMovies.erase(movie->title);
 
