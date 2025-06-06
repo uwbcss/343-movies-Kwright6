@@ -52,7 +52,7 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
     return;
   }
 
-  if (genre == 'F') {
+  if (genre == 'F') { // Comedy
     // Check for Valid Type
     if (type != 'D') {
       // output: Invalid media type <type>, discarding line:  F Fargo, 1996
@@ -86,7 +86,7 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
     title = title.substr(title.find_first_not_of(' ')); // remove leading space
   }
 
-  if (genre == 'D') {
+  if (genre == 'D') { // Drama
     // Check for Valid Type
     if (type != 'D') {
       // output: Invalid media type <type>, discarding line:  D director, title
@@ -119,7 +119,7 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
         director.find_first_not_of(' ')); // remove leading space
   }
 
-  if (genre == 'C') {
+  if (genre == 'C') { // Classic
     // Check for Valid Type
     if (type != 'D') {
       // output: Invalid media type <type>, discarding line:  C 5 1940 Katherine
