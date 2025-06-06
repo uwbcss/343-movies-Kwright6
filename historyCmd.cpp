@@ -39,6 +39,8 @@ void HistoryCmd::execute(MovieStore &store, const vector<string> &vs) const {
   customer->printHistory();
 }
 
+#ifndef EXCLUDE_HISTORYCMD
+
 HistoryCmdFactory::HistoryCmdFactory() { registerType('H', this); }
 
 Command *HistoryCmdFactory::makeCommand(const vector<string> &vs) const {
@@ -48,3 +50,5 @@ Command *HistoryCmdFactory::makeCommand(const vector<string> &vs) const {
 
 // creating the object registers the type at run time
 HistoryCmdFactory theHistoryCmdFactory;
+
+#endif  // EXCLUDE_HISTORYCMD
