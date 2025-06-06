@@ -175,7 +175,7 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
 
   // Check if movie is invalid (bogus title) (todo: output)
   if (movieToBorrow == nullptr) {
-    // output: Invalid movie  for customer <fullName>, discarding line:"
+    // output: Invalid movie for customer <fullName>, discarding line:"
     cout << "Invalid movie  for customer " << customer->getFullName()
          << ", discarding line: " << endl;
     return;
