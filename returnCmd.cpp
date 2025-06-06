@@ -12,7 +12,7 @@ ReturnCmd::ReturnCmd() : cmd('R') {}
 // helper to Return movie
 
 /*
-  Give movie to customer and update stock
+  Take movie from customer and update stock
 */
 void ReturnCmd::execute(MovieStore &store, const vector<string> &vs) const {
   char cmd;
