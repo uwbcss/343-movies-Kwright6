@@ -126,6 +126,7 @@ void MovieStore::readCommandsFromFile(const string &filename) {
 void MovieStore::executeCommands(const string &filename) {
   // Read commands from file and execute them
   readCommandsFromFile(filename);
+  cout << "Done!" << endl;
 }
 
 void MovieStore::readCustomersFromFile(const string &filename) {

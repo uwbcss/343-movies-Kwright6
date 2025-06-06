@@ -117,7 +117,6 @@ void testStoreFinal() {
 
   // initialize the contents of the inventory from file
   store.readMoviesFromFile("data4movies.txt");
-  cout << "==========================" << endl;
 
   // Sort Movie Lists
   store.sortInventory();

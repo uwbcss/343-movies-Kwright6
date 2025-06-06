@@ -13,6 +13,9 @@ void InventoryCmd::execute(MovieStore &store, const vector<string> &vs) const {
   assert(vs.size() == 1); // to avoid unused parameter warning
   static const int tablesize = 'Z' - 'A' + 1;
   const auto &inventory = store.getMoviesByType(); // get movies
+
+  cout << "==========================" << endl; // formatting
+
   // Search through inventory for all movies
   for (int i = tablesize - 1; i >= 0; i--) {
     const auto &movieList = inventory[i];
