@@ -32,7 +32,7 @@ void testStore1() {
     getline(fs, discard);
   }
   fs.close();
-  string result = "IHHBBBBBBBBBRBRBRIBBIH";
+  string result = "IHHRBBBBBBBBBRBRBRIBBIH";
   assert(out.str() == result);
   cout << "End testStore1" << endl;
 }
@@ -57,55 +57,55 @@ void testStore2() {
   cout << "Start testStore2" << endl;
 
   // ========Test Creating Movies=============
-  // string cfile = "testMovieData.txt";
-  // stringstream out;
+  string cfile = "testMovieData.txt";
+  stringstream out;
 
-  // ifstream fs(cfile);
-  // assert(fs.is_open());
+  ifstream fs(cfile);
+  assert(fs.is_open());
 
-  // string str;
-  // while (getline(fs, str) && !str.empty()) {
-  //   vector<string> vs = splitString(str); // split string into tokens
-  //   if (vs.empty()) {
-  //     continue;
-  //   } // check if empty
+  string str;
+  while (getline(fs, str) && !str.empty()) {
+    vector<string> vs = splitString(str); // split string into tokens
+    if (vs.empty()) {
+      continue;
+    } // check if empty
 
-  //   char genre = vs[0][0]; // take the first character as movie genre
-  //   out << vs[0];
+    char genre = vs[0][0]; // take the first character as movie genre
+    out << vs[0];
 
-  //   // ignoring other pet parameters for this example
-  //   Movie *movie = MovieFactory::create(genre, vs);
-  //   delete movie;
-  // }
-  // fs.close();
-  // assert(out.str() == "DDCCCFF");
+    // ignoring other pet parameters for this example
+    Movie *movie = MovieFactory::create(genre, vs);
+    delete movie;
+  }
+  fs.close();
+  assert(out.str() == "DDCCCFF");
 
-  // // =============Test Sorting================
-  // MovieStore store;                            // create store
-  // store.readMoviesFromFile("data4movies.txt"); // get inventory
+  // =============Test Sorting================
+  MovieStore store;                            // create store
+  store.readMoviesFromFile("data4movies.txt"); // get inventory
 
-  // auto &inventory = store.getMoviesByType();
-  // vector<int> genres = {('F' - 'A'), ('D' - 'A'), ('C' - 'A')};
-  // for (int genre : genres) {
-  //   for (const Movie *movie : inventory[genre]) {
-  //     if (movie != nullptr) {
-  //       // print movies
-  //       // movie->print();
-  //     }
-  //   }
-  // }
-  // // Sort Vectors
-  // store.sortInventory();
-  // cout << endl;
+  auto &inventory = store.getMoviesByType();
+  vector<int> genres = {('F' - 'A'), ('D' - 'A'), ('C' - 'A')};
+  for (int genre : genres) {
+    for (const Movie *movie : inventory[genre]) {
+      if (movie != nullptr) {
+        // print movies
+        movie->print();
+      }
+    }
+  }
+  // Sort Vectors
+  store.sortInventory();
+  cout << endl;
 
-  // for (int genre : genres) {
-  //   for (const Movie *movie : inventory[genre]) {
-  //     if (movie != nullptr) {
-  //       // print movies
-  //       // movie->print();
-  //     }
-  //   }
-  // }
+  for (int genre : genres) {
+    for (const Movie *movie : inventory[genre]) {
+      if (movie != nullptr) {
+        // print movies
+        movie->print();
+      }
+    }
+  }
   cout << "End testStore2" << endl;
 }
 
