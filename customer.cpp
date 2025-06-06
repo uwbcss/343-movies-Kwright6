@@ -31,5 +31,15 @@ void Customer::returnMovie(Movie *movie) {
 }
 
 void Customer::printHistory() const {
-  // TODO
+  // Check if no history
+  if (history.empty()) {
+    cout << "No history for " << getFullName() << endl;
+    return;
+  }
+
+  // Print history
+  for (string transaction : history) {
+    cout << transaction << endl;
+  }
+
 }
