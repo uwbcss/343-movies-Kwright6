@@ -43,4 +43,4 @@ Command *InventoryCmdFactory::makeCommand(const vector<string> &vs) const {
 // creating the object registers the type at run time
 InventoryCmdFactory theInventoryCmdFactory;
 
-#endif  // EXCLUDE_INVENTORYCMD
+#endif // EXCLUDE_INVENTORYCMD

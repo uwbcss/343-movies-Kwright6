@@ -37,4 +37,4 @@ Movie *DramaFactory::makeMovie(const vector<string> &vs) const {
 // creating the object registers the type at run time
 DramaFactory theDramaFactory;
 
-#endif  // EXCLUDE_DRAMA
+#endif // EXCLUDE_DRAMA

@@ -103,8 +103,8 @@ void ReturnCmd::execute(MovieStore &store, const vector<string> &vs) const {
 
   // Return movie
   // output: Debug: Return <id> <fullName> movie->print()
-  //cout << "Debug: Return " << id << " " << customer->getFullName() << " ";
-  //movieToReturn->print();
+  // cout << "Debug: Return " << id << " " << customer->getFullName() << " ";
+  // movieToReturn->print();
   customer->returnMovie(movieToReturn);
   movieToReturn->stock++; // Update stock
 }

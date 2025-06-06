@@ -33,7 +33,8 @@ void HistoryCmd::execute(MovieStore &store, const vector<string> &vs) const {
   }
 
   // Print history
-  //cout << "Debug: History for " << id << " " << customer->getFullName() << endl;
+  // cout << "Debug: History for " << id << " " << customer->getFullName() <<
+  // endl;
   cout << "==========================" << endl;
   cout << "History for " << id << " " << customer->getFullName() << ":" << endl;
   customer->printHistory();
@@ -51,4 +52,4 @@ Command *HistoryCmdFactory::makeCommand(const vector<string> &vs) const {
 // creating the object registers the type at run time
 HistoryCmdFactory theHistoryCmdFactory;
 
-#endif  // EXCLUDE_HISTORYCMD
+#endif // EXCLUDE_HISTORYCMD
