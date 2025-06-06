@@ -1,6 +1,7 @@
 #include "command.h"
 #include "commandFactory.h"
 #include <iostream>
+#include <sstream>
 #include <map>
 
 using namespace std;
@@ -23,7 +24,19 @@ void CommandFactory::registerType(const char &type, CommandFactory *factory) {
 Command *CommandFactory::create(const char &cmd, const vector<string> &vs) {
   auto &factories = getMap();
   if (factories.count(cmd) == 0) {
-    cout << "Don't know how to create " << cmd << endl;
+    cout << "Unknown command type: " << cmd << ", discarding line: ";
+    if (vs.size() > 1) {
+      for (int i = 1; i < vs.size(); i++) {
+        cout << " " << vs[i];
+      }
+    } else {
+      istringstream iss(vs[0]);
+      string str;
+      iss >> str; // remove invalid command
+      getline(iss, str); // get rest of line
+      cout << str;
+    }
+    cout << endl;
     return nullptr;
   }
   return factories.at(cmd)->makeCommand(vs);
