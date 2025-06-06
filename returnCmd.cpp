@@ -109,6 +109,8 @@ void ReturnCmd::execute(MovieStore &store, const vector<string> &vs) const {
   movieToReturn->stock++; // Update stock
 }
 
+#ifndef EXCLUDE_RETURNCMD
+
 ReturnCmdFactory::ReturnCmdFactory() { registerType('R', this); }
 
 Command *ReturnCmdFactory::makeCommand(const vector<string> &vs) const {
@@ -118,3 +120,5 @@ Command *ReturnCmdFactory::makeCommand(const vector<string> &vs) const {
 
 // creating the object registers the type at run time
 ReturnCmdFactory theReturnCmdFactory;
+
+#endif // EXCLUDE_RETURNCMD
