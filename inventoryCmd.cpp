@@ -31,6 +31,8 @@ void InventoryCmd::execute(MovieStore &store, const vector<string> &vs) const {
   }
 }
 
+#ifndef EXCLUDE_INVENTORYCMD
+
 InventoryCmdFactory::InventoryCmdFactory() { registerType('I', this); }
 
 Command *InventoryCmdFactory::makeCommand(const vector<string> &vs) const {
@@ -40,3 +42,5 @@ Command *InventoryCmdFactory::makeCommand(const vector<string> &vs) const {
 
 // creating the object registers the type at run time
 InventoryCmdFactory theInventoryCmdFactory;
+
+#endif  // EXCLUDE_INVENTORYCMD
