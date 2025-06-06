@@ -14,6 +14,7 @@ class Customer {
         string firstName;
         string lastName;
         unordered_map<string, Movie*> borrowedMovies; // movie map <Title, Movie>
+        vector<string> history; // string format = "cmd title" ex: "Borrow Unforgiven"
     public:
         // Constructor
         Customer(int id, const string &firstName, const string &lastName);

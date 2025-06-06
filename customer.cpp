@@ -1,5 +1,6 @@
 #include "customer.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -16,11 +17,17 @@ string Customer::getFullName() const { return lastName + " " + firstName; }
 void Customer::borrowMovie(Movie *movie) {
   // add movie to borrowedMovies
   borrowedMovies[movie->title] = movie;
+
+  // update history
+  history.push_back("Borrow " + movie->title);
 }
 
 void Customer::returnMovie(Movie *movie) {
   // remove movie from borrowedMovies
   borrowedMovies.erase(movie->title);
+
+  // update history
+  history.push_back("Return " + movie->title);
 }
 
 void Customer::getHistory() const {
