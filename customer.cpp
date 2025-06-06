@@ -1,5 +1,6 @@
 #include "customer.h"
 #include <iostream>
+#include <sstream>
 #include <string>
 
 using namespace std;
@@ -38,7 +39,12 @@ void Customer::printHistory() const {
   }
 
   // Print history
+  string command;
+  string title;
   for (string transaction : history) {
-    cout << transaction << endl;
+    istringstream iss(transaction);
+    iss >> command;
+    getline(iss, title);
+    cout << command << " " << getFullName() << title << endl;
   }
 }

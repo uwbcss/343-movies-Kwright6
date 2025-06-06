@@ -200,6 +200,9 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
     movieToBorrow->print();
     movieToBorrow->stock--; // Update stock
   } else {
+    // output: Debug: Borrow <id> <fullName> movie->print() *with 0 stock*
+    cout << "Debug: Borrow " << id << " " << customer->getFullName() << " ";
+    movieToBorrow->print();
     // output:
     // ==========================
     // <fullName> could NOT borrow <title>, out of stock:
@@ -209,7 +212,7 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
     cout << customer->getFullName() << " could NOT borrow "
          << movieToBorrow->title << ", out of stock:" << endl;
     cout << "==========================" << endl;
-    cout << "Failed to execute command: Borrow" << customer->getFullName()
+    cout << "Failed to execute command: Borrow " << customer->getFullName()
          << " " << movieToBorrow->title << endl;
   }
 }
