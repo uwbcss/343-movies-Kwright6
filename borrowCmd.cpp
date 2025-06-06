@@ -220,6 +220,8 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
   }
 }
 
+#ifndef EXCLUDE_BORROWCMD
+
 BorrowCmdFactory::BorrowCmdFactory() { registerType('B', this); }
 
 Command *BorrowCmdFactory::makeCommand(const vector<string> &vs) const {
@@ -229,3 +231,5 @@ Command *BorrowCmdFactory::makeCommand(const vector<string> &vs) const {
 
 // creating the object registers the type at run time
 BorrowCmdFactory theBorrowCmdFactory;
+
+#endif  // EXCLUDE_BORROWCMD
