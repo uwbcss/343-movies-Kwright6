@@ -32,7 +32,7 @@ Command *CommandFactory::create(const char &cmd, const vector<string> &vs) {
     } else {
       istringstream iss(vs[0]);
       string str;
-      iss >> str; // remove invalid command
+      iss >> str;        // remove invalid command
       getline(iss, str); // get rest of line
       cout << str;
     }
