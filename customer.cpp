@@ -1,6 +1,6 @@
 #include "customer.h"
-#include <string>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -41,5 +41,4 @@ void Customer::printHistory() const {
   for (string transaction : history) {
     cout << transaction << endl;
   }
-
 }
