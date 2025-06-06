@@ -187,7 +187,7 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
     string str;
     getline(iss, str);
     cout << "Invalid movie for customer " << customer->getFullName()
-         << ", discarding line: " << title << endl;
+         << ", discarding line: " << endl;
     return;
   }
 
