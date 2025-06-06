@@ -32,11 +32,11 @@ void Customer::returnMovie(Movie *movie) {
     // ==========================
     // Failed to execute command: Return <fullName> <title>
     cout << "==========================" << endl;
-    cout << getFullName() << " could NOT return "
-         << movie->title << ", never borrowed:" << endl;
+    cout << getFullName() << " could NOT return " << movie->title
+         << ", never borrowed:" << endl;
     cout << "==========================" << endl;
-    cout << "Failed to execute command: Return " << getFullName()
-         << " " << movie->title << endl;
+    cout << "Failed to execute command: Return " << getFullName() << " "
+         << movie->title << endl;
     return;
   }
 
