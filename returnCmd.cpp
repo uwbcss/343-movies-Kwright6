@@ -99,7 +99,7 @@ void ReturnCmd::execute(MovieStore &store, const vector<string> &vs) const {
 
 ReturnCmdFactory::ReturnCmdFactory() { registerType('R', this); }
 
-Command *ReturnCmdFactory::makeCommand(const vector<string> &/*vs*/) const {
+Command *ReturnCmdFactory::makeCommand(const vector<string> & /*vs*/) const {
   return new ReturnCmd();
 }
 

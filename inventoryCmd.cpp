@@ -9,7 +9,8 @@ InventoryCmd::InventoryCmd() : cmd('I') {} // Constructor
 /*
   Print all movies in store Inventory
 */
-void InventoryCmd::execute(MovieStore &store, const vector<string> &/*vs*/) const {
+void InventoryCmd::execute(MovieStore &store,
+                           const vector<string> & /*vs*/) const {
   static const int tablesize = 'Z' - 'A' + 1;
   const auto &inventory = store.getMoviesByType(); // get movies
 
@@ -34,7 +35,7 @@ void InventoryCmd::execute(MovieStore &store, const vector<string> &/*vs*/) cons
 
 InventoryCmdFactory::InventoryCmdFactory() { registerType('I', this); }
 
-Command *InventoryCmdFactory::makeCommand(const vector<string> &/*vs*/) const {
+Command *InventoryCmdFactory::makeCommand(const vector<string> & /*vs*/) const {
   return new InventoryCmd();
 }
 

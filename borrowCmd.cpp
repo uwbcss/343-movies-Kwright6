@@ -207,7 +207,7 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
 
 BorrowCmdFactory::BorrowCmdFactory() { registerType('B', this); }
 
-Command *BorrowCmdFactory::makeCommand(const vector<string> &/*vs*/) const {
+Command *BorrowCmdFactory::makeCommand(const vector<string> & /*vs*/) const {
   return new BorrowCmd();
 }
 
