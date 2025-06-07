@@ -99,8 +99,7 @@ void ReturnCmd::execute(MovieStore &store, const vector<string> &vs) const {
 
 ReturnCmdFactory::ReturnCmdFactory() { registerType('R', this); }
 
-Command *ReturnCmdFactory::makeCommand(const vector<string> &vs) const {
-  assert(vs.size() == 2 || 1); // to avoid unused parameter warning
+Command *ReturnCmdFactory::makeCommand(const vector<string> &/*vs*/) const {
   return new ReturnCmd();
 }
 

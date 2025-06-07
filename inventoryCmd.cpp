@@ -9,8 +9,7 @@ InventoryCmd::InventoryCmd() : cmd('I') {} // Constructor
 /*
   Print all movies in store Inventory
 */
-void InventoryCmd::execute(MovieStore &store, const vector<string> &vs) const {
-  assert(vs.size() == 1); // to avoid unused parameter warning
+void InventoryCmd::execute(MovieStore &store, const vector<string> &/*vs*/) const {
   static const int tablesize = 'Z' - 'A' + 1;
   const auto &inventory = store.getMoviesByType(); // get movies
 
@@ -35,8 +34,7 @@ void InventoryCmd::execute(MovieStore &store, const vector<string> &vs) const {
 
 InventoryCmdFactory::InventoryCmdFactory() { registerType('I', this); }
 
-Command *InventoryCmdFactory::makeCommand(const vector<string> &vs) const {
-  assert(vs.size() == 1); // to avoid unused parameter warning
+Command *InventoryCmdFactory::makeCommand(const vector<string> &/*vs*/) const {
   return new InventoryCmd();
 }
 

@@ -44,8 +44,7 @@ void HistoryCmd::execute(MovieStore &store, const vector<string> &vs) const {
 
 HistoryCmdFactory::HistoryCmdFactory() { registerType('H', this); }
 
-Command *HistoryCmdFactory::makeCommand(const vector<string> &vs) const {
-  assert(vs.size() == 2 || 1); // to avoid unused parameter warning
+Command *HistoryCmdFactory::makeCommand(const vector<string> &/*vs*/) const {
   return new HistoryCmd();
 }
 
