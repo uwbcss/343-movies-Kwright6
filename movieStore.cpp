@@ -74,9 +74,8 @@ void MovieStore::readMoviesFromFile(const string &filename) {
     } // check if empty
 
     char genre = vs[0][0]; // take the first character as movie genre
-
-    // ignoring other parameters
     Movie *movie = MovieFactory::create(genre, vs);
+
     if (movie == nullptr) { // Discard line if nullptr
       // reconnect string minus the command
       string trimmed;
