@@ -41,6 +41,7 @@ void ReturnCmd::execute(MovieStore &store, const vector<string> &vs) const {
     customer = it->second;
   }
 
+  // Get data for Comedy
   if (genre == 'F') {
     // str = cmd id type genre title, year
     // vs[0] = B id D F title
@@ -51,6 +52,7 @@ void ReturnCmd::execute(MovieStore &store, const vector<string> &vs) const {
     title = title.substr(title.find_first_not_of(' ')); // remove leading space
   }
 
+  // Get data for Drama
   if (genre == 'D') {
     // str = cmd id type genre director, title
     // vs[0] = B id D D director
@@ -61,6 +63,7 @@ void ReturnCmd::execute(MovieStore &store, const vector<string> &vs) const {
         director.find_first_not_of(' ')); // remove leading space
   }
 
+  // Get data for Classic
   if (genre == 'C') {
     // str = cmd id type genre month year firstName lastName
     // vs[0] = B id D C month year firstName lastName
@@ -76,27 +79,10 @@ void ReturnCmd::execute(MovieStore &store, const vector<string> &vs) const {
   const auto &movieList = inventory[genre - 'A'];
   if (!movieList.empty()) {
     for (Movie *movie : movieList) {
-      // Comedy
-      if (genre == 'F' && (movie->title == title && movie->getYear() == year)) {
+      // Check if movie matches
+      if (movie->matches(month, year, title, director, majorActor)) {
         movieToReturn = movie;
         break;
-      }
-
-      // Drama
-      if (genre == 'D' &&
-          (movie->title == title && movie->director == director)) {
-        movieToReturn = movie;
-        break;
-      }
-
-      // Classic
-      if (genre == 'C') {
-        Classics *cMovie = dynamic_cast<Classics *>(movie);
-        if (cMovie->month == month && cMovie->year == year &&
-            cMovie->majorActor == majorActor) {
-          movieToReturn = movie;
-          break;
-        }
       }
     }
   }
