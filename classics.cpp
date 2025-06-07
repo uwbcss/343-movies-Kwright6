@@ -49,8 +49,8 @@ bool Classics::lessThan(const Movie *other) const {
 }
 
 // compare for finding movie
-bool Classics::matches(int month, int year, string /*title*/, string /*director*/,
-                       string majorActor) const {
+bool Classics::matches(int month, int year, string /*title*/,
+                       string /*director*/, string majorActor) const {
   return this->month == month && this->year == year &&
          this->majorActor == majorActor;
 }
