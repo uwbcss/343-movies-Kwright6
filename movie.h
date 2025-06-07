@@ -17,6 +17,7 @@ class Movie {
         int stock;
         virtual int getYear() const = 0;
         virtual void print() const = 0; // each movie can print itself
+        virtual bool lessThan(const Movie* other) const = 0; // less than compare for sort
         virtual ~Movie() = default;  // not really used in this case
 };
 

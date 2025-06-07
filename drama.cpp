@@ -18,12 +18,19 @@ Drama::Drama(const vector<string> &vs) {
 // getter for year
 int Drama::getYear() const { return year; }
 
+// print movie
 void Drama::print() const {
   // D, 10, Barry Levinson, Good Morning Vietnam, 1988
   // Barry Levinson, Good Morning Vietnam, 1988 (10) - Drama
   // Director, Title, Year (stock) - Drama
   cout << director << ", " << title << ", " << year << " (" << stock << ")"
        << " - Drama" << endl;
+}
+
+// less than compare for sorting
+bool Drama::lessThan(const Movie *other) const {
+  return this->director < other->director ||
+         (this->director == other->director && this->title < other->title);
 }
 
 #ifndef EXCLUDE_DRAMA

@@ -23,7 +23,11 @@ class Classics : public Movie {
         // getter for year
         int getYear() const override;
 
+        // print movie
         void print() const override;
+
+        // less than compare for sorting
+        bool lessThan(const Movie* other) const override;
 };
 
 /**

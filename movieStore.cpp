@@ -158,30 +158,21 @@ void MovieStore::sortInventory() {
   std::sort(moviesByType['D' - 'A'].begin(), moviesByType['D' - 'A'].end(),
             [](Movie *a, Movie *b) {
               // sort by director, if same, sort by title
-              return a->director < b->director ||
-                     (a->director == b->director && a->title < b->title);
+              return a->lessThan(b);
             });
 
   // Sort Comedy Vector
   std::sort(moviesByType['F' - 'A'].begin(), moviesByType['F' - 'A'].end(),
             [](Movie *a, Movie *b) {
-              Comedy *fa = dynamic_cast<Comedy *>(a);
-              Comedy *fb = dynamic_cast<Comedy *>(b);
               // sort by title, if same, sort by year
-              return a->title < b->title ||
-                     (a->title == b->title && fa->year < fb->year);
+              return a->lessThan(b);
             });
 
   // Sort Classics Vector
   std::sort(moviesByType['C' - 'A'].begin(), moviesByType['C' - 'A'].end(),
             [](Movie *a, Movie *b) {
-              Classics *ca = dynamic_cast<Classics *>(a);
-              Classics *cb = dynamic_cast<Classics *>(b);
               // sort by year, if same, sort by month, if same, sort by
               // majorActor
-              return ca->year < cb->year ||
-                     (ca->year == cb->year && ca->month < cb->month) ||
-                     (ca->year == cb->year && ca->month == cb->month &&
-                      ca->majorActor < cb->majorActor);
+              return a->lessThan(b);
             });
 }

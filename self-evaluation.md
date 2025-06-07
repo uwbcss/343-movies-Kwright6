@@ -76,7 +76,7 @@ container used for comedy movies: vector<Movie*> movieStore.h/.cpp
 
 function for sorting comedy movies: movieStore.h/.cpp sortInventory()
 
-function where comedy movies are sorted: movieStore.h/.cpp sortInventory()
+function where comedy movies are sorted: comedy.h/.cpp lessthan()
 
 functions called when retrieving a comedy movie based on title and year: borrowCmd.cpp execute(), inventoryCmd.cpp execute(), returnCmd.cpp execute(), 
 
@@ -92,7 +92,7 @@ explain borrowing a movie that has 0 stock: if the stock of our movie object isn
 
 explain returning a movie that customer has not checked out: in Customer::returnMovie(), if the movie is not found in the customer's borrowedMovies unordered_map<string, Movie*>, it outputs who couldnt return the title, never borrowed, and failed to execute Return on who and on what title
 
-any static_cast or dynamic_cast used: dynamic_cast used in borrowCmd.cpp to get classic movies; Used in returnCmd.cpp to get classic movies; Used in movieStore.cpp to sort comedies and classics
+any static_cast or dynamic_cast used: dynamic_cast used in borrowCmd.cpp to get classic movies; Used in returnCmd.cpp to get classic movies; Used in comedy.cpp to sort comedies; Used in classics.cpp to sort classics;
 
 ## Bonus +5
 

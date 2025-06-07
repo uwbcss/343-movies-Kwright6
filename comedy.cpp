@@ -17,12 +17,21 @@ Comedy::Comedy(const vector<string> &vs) {
 // getter for year
 int Comedy::getYear() const { return year; }
 
+// print movie
 void Comedy::print() const {
   // F, 10, Nora Ephron, Sleepless in Seattle, 1993
   // Sleepless in Seattle, 1993, Nora Ephron (10) - Comedy
   // Title, Year, Director (stock) - Comedy
   cout << title << ", " << year << ", " << director << " (" << stock << ")"
        << " - Comedy" << endl;
+}
+
+// less than compare for sorting
+bool Comedy::lessThan(const Movie *other) const {
+  const Comedy *o = dynamic_cast<const Comedy *>(other);
+  // sort by title, if same, sort by year
+  return this->title < o->title ||
+         (this->title == o->title && this->year < o->year);
 }
 
 ComedyFactory::ComedyFactory() { registerType('F', this); }
