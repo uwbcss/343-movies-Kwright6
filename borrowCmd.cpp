@@ -159,27 +159,10 @@ void BorrowCmd::execute(MovieStore &store, const vector<string> &vs) const {
   const auto &movieList = inventory[genre - 'A'];
   if (!movieList.empty()) {
     for (Movie *movie : movieList) {
-      // Comedy
-      if (genre == 'F' && (movie->title == title && movie->getYear() == year)) {
+      // Check if movie matches
+      if (movie->matches(month, year, title, director, majorActor)) {
         movieToBorrow = movie;
         break;
-      }
-
-      // Drama
-      if (genre == 'D' &&
-          (movie->title == title && movie->director == director)) {
-        movieToBorrow = movie;
-        break;
-      }
-
-      // Classic
-      if (genre == 'C') {
-        Classics *cMovie = dynamic_cast<Classics *>(movie);
-        if (cMovie->month == month && cMovie->year == year &&
-            cMovie->majorActor == majorActor) {
-          movieToBorrow = movie;
-          break;
-        }
       }
     }
   }
