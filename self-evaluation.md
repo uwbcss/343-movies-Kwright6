@@ -84,7 +84,7 @@ functions called for retrieving and printing customer history: historyCmd.cpp ex
 
 container used for customer history: vector<string> customer.h/.cpp
 
-functions called when borrowing a movie: borrowCmd.cpp execute(), custmer.cpp borrowMovie()
+functions called when borrowing a movie: borrowCmd.cpp execute(), movie.h virtual matches() -> calls matches() in drama.cpp or comedy.cpp or classics.cpp, custmer.cpp borrowMovie()
 
 explain borrowing a movie that does not exist: after searching through our inventory for a matching movie, movieToBorrow will equal nullptr. if it does, that means the movie doesn't exist and outputs invalid movie for customer
 
