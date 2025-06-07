@@ -34,6 +34,12 @@ bool Comedy::lessThan(const Movie *other) const {
          (this->title == o->title && this->year < o->year);
 }
 
+// compare for finding movie
+bool Comedy::matches(int /*month*/, int year, string title, string /*director*/,
+                     string /*majorActor*/) const {
+  return this->title == title && this->getYear() == year;
+}
+
 ComedyFactory::ComedyFactory() { registerType('F', this); }
 
 Movie *ComedyFactory::makeMovie(const vector<string> &vs) const {

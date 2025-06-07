@@ -48,6 +48,13 @@ bool Classics::lessThan(const Movie *other) const {
           this->majorActor < o->majorActor);
 }
 
+// compare for finding movie
+bool Classics::matches(int month, int year, string /*title*/, string /*director*/,
+                       string majorActor) const {
+  return this->month == month && this->year == year &&
+         this->majorActor == majorActor;
+}
+
 ClassicsFactory::ClassicsFactory() { registerType('C', this); }
 
 Movie *ClassicsFactory::makeMovie(const vector<string> &vs) const {

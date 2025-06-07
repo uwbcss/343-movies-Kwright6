@@ -26,6 +26,10 @@ class Comedy : public Movie {
 
         // less than compare for sorting
         bool lessThan(const Movie* other) const override;
+
+        // compare for finding movie
+        bool matches(int month, int year, string title, string director, 
+            string majorActor) const override;
 };
 
 /**

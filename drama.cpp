@@ -33,6 +33,12 @@ bool Drama::lessThan(const Movie *other) const {
          (this->director == other->director && this->title < other->title);
 }
 
+// compare for finding movie
+bool Drama::matches(int /*month*/, int /*year*/, string title, string director,
+                    string /*majorActor*/) const {
+  return this->title == title && this->director == director;
+}
+
 #ifndef EXCLUDE_DRAMA
 
 DramaFactory::DramaFactory() { registerType('D', this); }
